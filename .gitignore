@@ -1,0 +1,16 @@
+# Build outputs
+bin/
+obj/
+
+# VS
+.vs/
+
+# VS Code
+.vscode/
+
+# User settings
+*.user
+*.suo
+
+# macOS
+.DS_Store
