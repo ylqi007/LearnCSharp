@@ -29,12 +29,14 @@ LearnCSharp
 # Learning Roadmap
 
 ## Fundamentals
+* ✅ Completed
+* 🚧 In Progress
 
 | Status | Project                  |
 | ------ | ------------------------ |
 | ✅      | 01-console-basics        |
 | ✅      | 02-types-and-nullability |
-| 🚧      | 03-oop                   |
+| ✅      | 03-oop                   |
 | ⏳      | 04-generics              |
 | ⏳      | 05-collections           |
 | ⏳      | 06-linq                  |
