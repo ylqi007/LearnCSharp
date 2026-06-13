@@ -26,7 +26,7 @@ My journey of learning modern C#, .NET, ASP.NET Core, and Azure Identity.
 | ✅      | 06-linq                  |
 | ✅      | 07-records               |
 | ✅      | 08-exceptions            |
-| ⏳      | 09-delegates-and-events  |
+| ✅      | 09-delegates-and-events  |
 | ⏳      | 10-async-await           |
 
 Current Focus:
@@ -236,6 +236,36 @@ Key Takeaways:
 - Prefer `TryParse` and `TryGetValue` for expected failures.
 - Async exceptions are caught around `await`.
 - C# does not have checked exceptions like Java.
+
+---
+
+### 09-delegates-and-events
+
+Topics:
+
+- delegate
+- Func
+- Action
+- Predicate
+- Lambda Expressions
+- Callbacks
+- Events
+- EventHandler<T>
+- Multicast Delegates
+- LINQ Delegate Usage
+
+Key Takeaways:
+
+- A delegate is a type-safe reference to a method.
+- `Func<T>` represents a method that returns a value.
+- `Action<T>` represents a method that returns void.
+- `Predicate<T>` represents a method returning bool.
+- Lambdas are concise inline delegate implementations.
+- Delegates allow behavior to be passed as data.
+- Events are built on top of delegates.
+- `EventHandler<TEventArgs>` is the standard .NET event pattern.
+- Delegates can be multicast.
+- LINQ methods rely heavily on delegates.
 
 ---
 
