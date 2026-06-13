@@ -25,7 +25,7 @@ My journey of learning modern C#, .NET, ASP.NET Core, and Azure Identity.
 | ✅      | 05-collections           |
 | ✅      | 06-linq                  |
 | ✅      | 07-records               |
-| ⏳      | 08-exceptions            |
+| ✅      | 08-exceptions            |
 | ⏳      | 09-delegates-and-events  |
 | ⏳      | 10-async-await           |
 
@@ -206,6 +206,36 @@ Key Takeaways:
 - Record structs are value types.
 - Records are useful for API responses, configuration models, and immutable data.
 - Records pair naturally with pattern matching.
+
+---
+
+### 08-exceptions
+
+Topics:
+
+- try / catch / finally
+- throw
+- rethrow with `throw;`
+- built-in exceptions
+- custom exceptions
+- exception filters
+- validation exceptions
+- TryParse pattern
+- async exceptions
+
+Key Takeaways:
+
+- Exceptions represent exceptional failures.
+- Catch specific exceptions before general exceptions.
+- `finally` is used for cleanup.
+- Use `throw;` to preserve stack trace.
+- Avoid `throw ex;`.
+- Custom exceptions are useful for domain-specific failures.
+- Exception filters allow conditional catch logic.
+- Do not use exceptions for normal control flow.
+- Prefer `TryParse` and `TryGetValue` for expected failures.
+- Async exceptions are caught around `await`.
+- C# does not have checked exceptions like Java.
 
 ---
 
