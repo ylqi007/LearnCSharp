@@ -23,7 +23,7 @@ My journey of learning modern C#, .NET, ASP.NET Core, and Azure Identity.
 | ✅      | 03-oop                   |
 | ✅      | 04-generics              |
 | ✅      | 05-collections           |
-| ⏳      | 06-linq                  |
+| ✅      | 06-linq                  |
 | ⏳      | 07-records               |
 | ⏳      | 08-exceptions            |
 | ⏳      | 09-delegates-and-events  |
@@ -146,6 +146,38 @@ Key Takeaways:
 - `Stack<T>` provides LIFO behavior.
 - `IReadOnlyList<T>` is useful for exposing read-only collection access.
 - Collections are the foundation for LINQ.
+
+---
+
+### 06 - LINQ
+
+#### Learning Objectives
+
+Understand Language Integrated Query (LINQ) and how it enables expressive collection processing.
+
+Topics:
+
+- Where
+- Select
+- OrderBy
+- First
+- Any
+- All
+- GroupBy
+- ToDictionary
+- SelectMany
+- Query Syntax
+- Deferred Execution
+
+#### Key Takeaways
+
+- LINQ provides declarative collection processing.
+- Where filters data.
+- Select transforms data.
+- GroupBy groups data.
+- SelectMany flattens nested collections.
+- LINQ uses deferred execution by default.
+- Most modern .NET applications rely heavily on LINQ.
 
 ---
 
