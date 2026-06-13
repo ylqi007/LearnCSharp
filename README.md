@@ -27,7 +27,7 @@ My journey of learning modern C#, .NET, ASP.NET Core, and Azure Identity.
 | ✅      | 07-records               |
 | ✅      | 08-exceptions            |
 | ✅      | 09-delegates-and-events  |
-| ⏳      | 10-async-await           |
+| ✅      | 10-async-await           |
 
 Current Focus:
 
@@ -266,6 +266,39 @@ Key Takeaways:
 - `EventHandler<TEventArgs>` is the standard .NET event pattern.
 - Delegates can be multicast.
 - LINQ methods rely heavily on delegates.
+
+---
+
+### 10-async-await
+
+Topics:
+
+- Task
+- Task<T>
+- async
+- await
+- Dependent vs Independent Tasks
+- Fan-Out / Fan-In Pattern
+- Task.WhenAll
+- Task.WhenAny
+- CancellationToken
+- Async Exceptions
+- IAsyncEnumerable<T>
+- Identity Token Async Scenarios
+
+Key Takeaways:
+
+- `Task` represents future work.
+- `Task<T>` represents future work that returns a value.
+- `await` waits without blocking a thread.
+- If task B depends on task A's result, use sequential awaits.
+- If task B does not depend on task A's result, start both tasks first and use `Task.WhenAll`.
+- After `Task.WhenAll`, awaiting individual tasks retrieves results; it does not run them again.
+- Fan-Out / Fan-In is useful for partial dependency graphs.
+- `CancellationToken` enables cooperative cancellation.
+- Async exceptions are caught around `await`.
+- Avoid `.Result` and `.Wait()`.
+- Async/await is essential for ASP.NET Core, Azure SDKs, and Identity systems.
 
 ---
 
