@@ -24,7 +24,7 @@ My journey of learning modern C#, .NET, ASP.NET Core, and Azure Identity.
 | ✅      | 04-generics              |
 | ✅      | 05-collections           |
 | ✅      | 06-linq                  |
-| ⏳      | 07-records               |
+| ✅      | 07-records               |
 | ⏳      | 08-exceptions            |
 | ⏳      | 09-delegates-and-events  |
 | ⏳      | 10-async-await           |
@@ -178,6 +178,34 @@ Topics:
 - SelectMany flattens nested collections.
 - LINQ uses deferred execution by default.
 - Most modern .NET applications rely heavily on LINQ.
+
+---
+
+### 07-records
+
+Topics:
+
+- Positional Records
+- Record Classes
+- Record Structs
+- Value Equality
+- `with` Expressions
+- Immutable Object Updates
+- Nested Records
+- Records as DTOs
+- Pattern Matching with Records
+
+Key Takeaways:
+
+- Records are designed for data-centric types.
+- Records provide value equality by default.
+- Records reduce boilerplate for DTOs and value objects.
+- `with` expressions create non-mutating copies.
+- `with` expressions perform shallow copies, not deep copies.
+- Record classes are reference types.
+- Record structs are value types.
+- Records are useful for API responses, configuration models, and immutable data.
+- Records pair naturally with pattern matching.
 
 ---
 
