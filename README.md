@@ -31,9 +31,6 @@ My journey of learning modern C#, .NET, ASP.NET Core, and Azure Identity.
 | ✅      | 11-extension-methods     |
 | ✅      | 12-dependency-injection-preview  |
 
-Current Focus:
-
-04-generics
 
 ---
 
