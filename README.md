@@ -28,6 +28,8 @@ My journey of learning modern C#, .NET, ASP.NET Core, and Azure Identity.
 | ✅      | 08-exceptions            |
 | ✅      | 09-delegates-and-events  |
 | ✅      | 10-async-await           |
+| ✅      | 11-extension-methods     |
+| ✅      | 12-dependency-injection-preview  |
 
 Current Focus:
 
