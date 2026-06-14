@@ -321,3 +321,31 @@ notes
 * VS Code
 * C# Dev Kit
 * GitHub
+
+
+## Phase 2 - ASP.NET Core
+
+Focus:
+* Web APIs
+* Dependency Injection
+* Middleware
+* Configuration
+* Logging
+* Error Handling
+
+Projects:
+* 01-minimal-api
+* 02-controller-api
+* 03-dependency-injection
+* 04-options-pattern
+* 05-middleware
+* 06-logging
+* 07-configuration
+* 08-global-exception-handling
+* 09-api-versioning
+* 10-health-checks
+
+Key Outcome:
+* Build REST APIs using ASP.NET Core
+* Understand the ASP.NET Core request pipeline
+* Understand Dependency Injection
