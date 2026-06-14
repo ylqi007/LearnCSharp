@@ -326,7 +326,10 @@ notes
 ## Phase 2 - ASP.NET Core
 
 Focus:
+
 * Web APIs
+* Routing
+* Controllers
 * Dependency Injection
 * Middleware
 * Configuration
@@ -334,18 +337,73 @@ Focus:
 * Error Handling
 
 Projects:
-* 01-minimal-api
-* 02-controller-api
-* 03-dependency-injection
-* 04-options-pattern
-* 05-middleware
-* 06-logging
-* 07-configuration
-* 08-global-exception-handling
-* 09-api-versioning
-* 10-health-checks
 
-Key Outcome:
-* Build REST APIs using ASP.NET Core
-* Understand the ASP.NET Core request pipeline
-* Understand Dependency Injection
+| Status | Project                      | Topics                                                       |
+| ------ | ---------------------------- | ------------------------------------------------------------ |
+| ✅      | 01-minimal-api               | WebApplication, Routing, MapGet, MapPost, JSON Serialization |
+| ✅      | 02-controller-api            | Controller, Action, Routing, ApiController, IActionResult    |
+| ⬜      | 03-dependency-injection      | Service Lifetimes, Interfaces, IoC Container                 |
+| ⬜      | 04-options-pattern           | IOptions, Configuration Binding                              |
+| ⬜      | 05-middleware                | Request Pipeline, Custom Middleware                          |
+| ⬜      | 06-logging                   | ILogger, Structured Logging                                  |
+| ⬜      | 07-configuration             | appsettings.json, Environment Variables                      |
+| ⬜      | 08-global-exception-handling | Exception Handling, ProblemDetails                           |
+| ⬜      | 09-api-versioning            | API Versioning Strategies                                    |
+| ⬜      | 10-health-checks             | Health Checks, Readiness, Liveness                           |
+
+### Completed Knowledge
+
+#### Project 01 - Minimal API
+
+Key concepts:
+
+* WebApplicationBuilder
+* Dependency Injection (basic)
+* MapGet
+* MapPost
+* JSON Model Binding
+* Results.Ok
+* Results.Created
+
+Mental Model:
+
+```text
+HTTP Request
+    ↓
+Endpoint
+    ↓
+Service
+    ↓
+JSON Response
+```
+
+---
+
+#### Project 02 - Controller API
+
+Key concepts:
+
+* Controller
+* ControllerBase
+* ApiController
+* Route
+* HttpGet
+* HttpPost
+* IActionResult
+* Constructor Injection
+
+Mental Model:
+
+```text
+HTTP Request
+    ↓
+Routing
+    ↓
+Controller
+    ↓
+Action
+    ↓
+Service
+    ↓
+HTTP Response
+```
