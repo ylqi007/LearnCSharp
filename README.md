@@ -342,7 +342,7 @@ Projects:
 | ------ | ---------------------------- | ------------------------------------------------------------ |
 | ✅      | 01-minimal-api               | WebApplication, Routing, MapGet, MapPost, JSON Serialization |
 | ✅      | 02-controller-api            | Controller, Action, Routing, ApiController, IActionResult    |
-| ⬜      | 03-dependency-injection      | Service Lifetimes, Interfaces, IoC Container                 |
+| ✅      | 03-dependency-injection      | Service Lifetimes, Interfaces, IoC Container                 |
 | ⬜      | 04-options-pattern           | IOptions, Configuration Binding                              |
 | ⬜      | 05-middleware                | Request Pipeline, Custom Middleware                          |
 | ⬜      | 06-logging                   | ILogger, Structured Logging                                  |
@@ -407,3 +407,68 @@ Service
     ↓
 HTTP Response
 ```
+
+---
+
+#### Project 03 - Dependency Injection
+
+Core Concepts:
+
+* Dependency Injection (DI)
+* Inversion of Control (IoC)
+* Interface vs Implementation
+* Constructor Injection
+* Service Registration
+* Service Lifetimes
+
+Key APIs:
+
+```csharp
+builder.Services.AddScoped<IUserService, UserService>();
+```
+
+```csharp
+public UsersController(IUserService userService)
+{
+    _userService = userService;
+}
+```
+
+Important Knowledge:
+
+* Controllers should depend on abstractions, not concrete implementations.
+* ASP.NET Core uses a built-in DI Container.
+* Dependencies are injected through constructors.
+* Services are registered in Program.cs.
+* Interfaces improve maintainability and testability.
+
+Service Lifetimes:
+
+| Lifetime  | Meaning                             |
+| --------- | ----------------------------------- |
+| Singleton | One instance for entire application |
+| Scoped    | One instance per HTTP request       |
+| Transient | New instance every injection        |
+
+Mental Model:
+
+```text
+Controller
+    ↓
+IUserService
+    ↓
+UserService
+    ↓
+Response
+```
+
+Takeaway:
+
+```text
+Do not create dependencies with new.
+Declare dependencies and let ASP.NET Core inject them.
+```
+
+## Appendix
+* Override 用于重写父类已经实现的方法。
+* Implement 是实现 interface 中定义的抽象方法。

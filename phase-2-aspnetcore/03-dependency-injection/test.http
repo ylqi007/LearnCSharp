@@ -1,0 +1,29 @@
+@host=http://localhost:5118
+
+### Root
+GET {{host}}/
+
+### Get all users
+GET {{host}}/api/users
+
+### Get user by id
+GET {{host}}/api/users/1
+
+### Get missing user
+GET {{host}}/api/users/999
+
+### Create user
+POST {{host}}/api/users
+Content-Type: application/json
+
+{
+  "id": 3,
+  "name": "Charlie",
+  "email": "charlie@example.com"
+}
+
+### Delete user
+DELETE {{host}}/api/users/3
+
+### Verify users after delete
+GET {{host}}/api/users
