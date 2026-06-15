@@ -343,8 +343,8 @@ Projects:
 | ✅      | 01-minimal-api               | WebApplication, Routing, MapGet, MapPost, JSON Serialization |
 | ✅      | 02-controller-api            | Controller, Action, Routing, ApiController, IActionResult    |
 | ✅      | 03-dependency-injection      | Service Lifetimes, Interfaces, IoC Container                 |
-| ⬜      | 04-options-pattern           | IOptions, Configuration Binding                              |
-| ⬜      | 05-middleware                | Request Pipeline, Custom Middleware                          |
+| ✅      | 04-options-pattern           | IOptions, Configuration Binding                              |
+| ✅      | 05-middleware                | Request Pipeline, Custom Middleware                          |
 | ⬜      | 06-logging                   | ILogger, Structured Logging                                  |
 | ⬜      | 07-configuration             | appsettings.json, Environment Variables                      |
 | ⬜      | 08-global-exception-handling | Exception Handling, ProblemDetails                           |
@@ -468,6 +468,72 @@ Takeaway:
 Do not create dependencies with new.
 Declare dependencies and let ASP.NET Core inject them.
 ```
+
+---
+
+#### Project 04 - Options Pattern
+
+Core Concepts:
+
+* Configuration Management
+* appsettings.json
+* Strongly Typed Configuration
+* Options Pattern
+* IOptions<T>
+
+Key APIs:
+
+```csharp
+builder.Services.Configure<UserSettingsOptions>(
+    builder.Configuration.GetSection(
+        UserSettingsOptions.SectionName));
+```
+
+```csharp
+public UserService(
+    IOptions<UserSettingsOptions> options)
+{
+    _settings = options.Value;
+}
+```
+
+Important Knowledge:
+
+* Configuration should not be hardcoded.
+* appsettings.json stores application settings.
+* Options classes represent configuration sections.
+* ASP.NET Core automatically binds configuration to objects.
+* Configuration can be injected through DI.
+
+Configuration Flow:
+
+```text
+appsettings.json
+    ↓
+GetSection(...)
+    ↓
+UserSettingsOptions
+    ↓
+IOptions<UserSettingsOptions>
+    ↓
+UserService
+```
+
+Key Files:
+
+```text
+appsettings.json
+Options/UserSettingsOptions.cs
+Program.cs
+```
+
+Takeaway:
+
+```text
+Use strongly typed configuration instead of raw string lookups.
+```
+
+---
 
 ## Appendix
 * Override 用于重写父类已经实现的方法。

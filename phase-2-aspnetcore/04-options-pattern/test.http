@@ -1,0 +1,30 @@
+@host=http://localhost:5118
+
+### Root
+GET {{host}}/
+
+### Get all users
+GET {{host}}/api/users
+
+### Get paged users
+GET {{host}}/api/users/paged
+
+### Get user by id
+GET {{host}}/api/users/1
+
+### Create user with explicit email
+POST {{host}}/api/users
+Content-Type: application/json
+
+{
+  "name": "Eve",
+  "email": "eve@example.com"
+}
+
+### Create user without email
+POST {{host}}/api/users
+Content-Type: application/json
+
+{
+  "name": "Frank"
+}
