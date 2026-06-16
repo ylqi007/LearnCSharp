@@ -345,7 +345,7 @@ Projects:
 | ✅      | 03-dependency-injection      | Service Lifetimes, Interfaces, IoC Container                 |
 | ✅      | 04-options-pattern           | IOptions, Configuration Binding                              |
 | ✅      | 05-middleware                | Request Pipeline, Custom Middleware                          |
-| ⬜      | 06-logging                   | ILogger, Structured Logging                                  |
+| ✅      | 06-logging                   | ILogger, Structured Logging                                  |
 | ⬜      | 07-configuration             | appsettings.json, Environment Variables                      |
 | ⬜      | 08-global-exception-handling | Exception Handling, ProblemDetails                           |
 | ⬜      | 09-api-versioning            | API Versioning Strategies                                    |
@@ -583,6 +583,29 @@ Response
 ✅ Takeaway: Middleware wraps Controllers and forms the backbone of the ASP.NET Core request pipeline.
 
 ---
+
+#### Project 06 - Logging
+
+Learned:
+* ILogger
+* Log Levels
+* Structured Logging
+* Correlation ID
+* BeginScope()
+
+Mental Model:
+```
+Request
+    ↓
+Middleware Logging
+    ↓
+Controller Logging
+    ↓
+Service Logging
+    ↓
+Response
+```
+
 
 ## Appendix
 * Override 用于重写父类已经实现的方法。

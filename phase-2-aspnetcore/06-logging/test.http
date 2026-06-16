@@ -1,0 +1,27 @@
+@host=http://localhost:5000
+
+### Root
+GET {{host}}/
+
+### Get all users
+GET {{host}}/api/users
+X-Correlation-Id: learn-csharp-demo-001
+
+### Get user by id
+GET {{host}}/api/users/1
+X-Correlation-Id: learn-csharp-demo-002
+
+### Get missing user
+GET {{host}}/api/users/999
+X-Correlation-Id: learn-csharp-demo-003
+
+### Create user
+POST {{host}}/api/users
+Content-Type: application/json
+X-Correlation-Id: learn-csharp-demo-004
+
+{
+  "id": 4,
+  "name": "Diana",
+  "email": "diana@example.com"
+}
