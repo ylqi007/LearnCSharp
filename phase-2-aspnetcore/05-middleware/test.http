@@ -1,0 +1,23 @@
+@host=http://localhost:5000
+
+### Root
+GET {{host}}/
+
+### Get all users
+GET {{host}}/api/users
+
+### Get user by id
+GET {{host}}/api/users/1
+
+### Get missing user
+GET {{host}}/api/users/999
+
+### Create user
+POST {{host}}/api/users
+Content-Type: application/json
+
+{
+  "id": 4,
+  "name": "Diana",
+  "email": "diana@example.com"
+}

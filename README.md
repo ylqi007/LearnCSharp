@@ -535,6 +535,55 @@ Use strongly typed configuration instead of raw string lookups.
 
 ---
 
+#### Project 05 - Middleware
+
+Core Concepts:
+* Middleware
+* Request Pipeline
+* HttpContext
+* RequestDelegate
+* Short Circuiting
+
+Key APIs:
+```csharpt
+app.UseRequestLogging();
+await _next(context);
+```
+
+Middleware Flow:
+```
+Request
+    ↓
+Middleware
+    ↓
+Controller
+    ↓
+Response
+    ↑
+Middleware
+```
+
+RequestDelegate:
+```csharp
+public delegate Task RequestDelegate(
+    HttpContext context);
+```
+
+Pipeline Example:
+```
+Request
+    ↓
+Logging Middleware
+    ↓
+Controller
+    ↓
+Response
+```
+
+✅ Takeaway: Middleware wraps Controllers and forms the backbone of the ASP.NET Core request pipeline.
+
+---
+
 ## Appendix
 * Override 用于重写父类已经实现的方法。
 * Implement 是实现 interface 中定义的抽象方法。
