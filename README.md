@@ -606,6 +606,37 @@ Service Logging
 Response
 ```
 
+---
+
+#### Project 07 - Configuration
+
+Learned:
+* IConfiguration
+* appsettings.json
+* appsettings.{Environment}.json
+* Environment Variables
+* Configuration Provider Precedence
+
+Mental Model:
+```
+Configuration Providers
+    ↓
+IConfiguration
+    ↓
+Options Binding
+    ↓
+IOptions<T>
+    ↓
+Services
+```
+
+Deep-Dive Topics:
+* IWebHostEnvironment
+* Configuration Providers
+* Provider Precedence
+* Environment-Based Configuration
+
+---
 
 ## Appendix
 * Override 用于重写父类已经实现的方法。

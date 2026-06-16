@@ -1,0 +1,21 @@
+@host=http://localhost:5000
+
+### Root configuration summary
+GET {{host}}/
+
+### Check what ASP.NET Core load
+GET {{host}}/debug-env
+
+### Configuration report
+GET {{host}}/api/configuration
+
+### Get paged users
+GET {{host}}/api/users/paged
+
+### Create user without email
+POST {{host}}/api/users
+Content-Type: application/json
+
+{
+  "name": "Frank"
+}
