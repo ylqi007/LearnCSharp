@@ -1,0 +1,43 @@
+@host=http://localhost:5000
+
+### Root
+GET {{host}}/
+
+### Get all users
+GET {{host}}/api/users
+
+### Get existing user
+GET {{host}}/api/users/1
+
+### Get missing user - should return 404
+GET {{host}}/api/users/999
+
+### Create valid user
+POST {{host}}/api/users
+Content-Type: application/json
+
+{
+  "name": "Charlie",
+  "email": "charlie@example.com"
+}
+
+### Create invalid user - should return 400
+POST {{host}}/api/users
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "invalid@example.com"
+}
+
+### Create duplicate user - should return 409
+POST {{host}}/api/users/with-id/1
+Content-Type: application/json
+
+{
+  "name": "Duplicate Alice",
+  "email": "alice2@example.com"
+}
+
+### Simulate unexpected failure - should return 500
+GET {{host}}/api/users/simulate-failure

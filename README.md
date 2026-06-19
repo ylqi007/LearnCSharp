@@ -346,8 +346,8 @@ Projects:
 | ✅      | 04-options-pattern           | IOptions, Configuration Binding                              |
 | ✅      | 05-middleware                | Request Pipeline, Custom Middleware                          |
 | ✅      | 06-logging                   | ILogger, Structured Logging                                  |
-| ⬜      | 07-configuration             | appsettings.json, Environment Variables                      |
-| ⬜      | 08-global-exception-handling | Exception Handling, ProblemDetails                           |
+| ✅      | 07-configuration             | appsettings.json, Environment Variables                      |
+| ✅      | 08-global-exception-handling | Exception Handling, ProblemDetails                           |
 | ⬜      | 09-api-versioning            | API Versioning Strategies                                    |
 | ⬜      | 10-health-checks             | Health Checks, Readiness, Liveness                           |
 
@@ -635,6 +635,55 @@ Deep-Dive Topics:
 * Configuration Providers
 * Provider Precedence
 * Environment-Based Configuration
+
+---
+
+#### Project 08 - Global Exception Handling
+
+Learned:
+* Global Exception Handling
+* Exception Middleware
+* Custom Application Exceptions
+* Error Response Contracts
+* HTTP Status Mapping
+* Expected vs Unexpected Exceptions
+* TraceId and Diagnostics
+
+Mental Model:
+```
+Request
+    ↓
+Exception Middleware
+    ↓
+Controller
+    ↓
+Service
+    ↓
+Exception
+    ↑
+Exception Middleware
+    ↓
+JSON Error Response
+```
+
+Deep-Dive Topics:
+* Middleware Pipeline Internals
+* RequestDelegate Chain
+* Exception Propagation
+* Error Contract Design
+* TraceIdentifier
+* Production Error Handling
+* Logging + Exception Correlation
+
+Key Takeaways:
+1. Controllers should not contain repeated try/catch blocks.
+2. Business logic should throw domain/application exceptions.
+3. Middleware should translate exceptions into HTTP responses.
+4. Expected exceptions map to 4xx responses.
+5. Unexpected exceptions map to 500 responses.
+6. Internal exception details should not be exposed to clients.
+7. TraceId is critical for production debugging.
+8. Exception handling is a cross-cutting concern and belongs in middleware.
 
 ---
 
