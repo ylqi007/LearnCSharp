@@ -348,7 +348,7 @@ Projects:
 | ✅      | 06-logging                   | ILogger, Structured Logging                                  |
 | ✅      | 07-configuration             | appsettings.json, Environment Variables                      |
 | ✅      | 08-global-exception-handling | Exception Handling, ProblemDetails                           |
-| ⬜      | 09-api-versioning            | API Versioning Strategies                                    |
+| ✅      | 09-api-versioning            | API Versioning Strategies                                    |
 | ⬜      | 10-health-checks             | Health Checks, Readiness, Liveness                           |
 
 ### Completed Knowledge
@@ -684,6 +684,10 @@ Key Takeaways:
 6. Internal exception details should not be exposed to clients.
 7. TraceId is critical for production debugging.
 8. Exception handling is a cross-cutting concern and belongs in middleware.
+
+---
+
+#### Project 09 api-versioning
 
 ---
 

@@ -1,0 +1,42 @@
+@host=http://localhost:5000
+
+### Root
+GET {{host}}/
+
+### V1 - Get users
+GET {{host}}/api/v1/users
+
+### V1 - Get user by id
+GET {{host}}/api/v1/users/1
+
+### V1 - Create user
+POST {{host}}/api/v1/users
+Content-Type: application/json
+
+{
+  "name": "Diana"
+}
+
+### V2 - Get active users only
+GET {{host}}/api/v2/users
+
+### V2 - Get all users including inactive
+GET {{host}}/api/v2/users?includeInactive=true
+
+### V2 - Get user by id
+GET {{host}}/api/v2/users/1
+
+### V2 - Create user with email
+POST {{host}}/api/v2/users
+Content-Type: application/json
+
+{
+  "displayName": "Eve",
+  "email": "eve@example.com"
+}
+
+### V2 - Deactivate user
+DELETE {{host}}/api/v2/users/2
+
+### V2 - Verify inactive users
+GET {{host}}/api/v2/users?includeInactive=true
