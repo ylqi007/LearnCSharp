@@ -349,7 +349,57 @@ Projects:
 | ✅      | 07-configuration             | appsettings.json, Environment Variables                      |
 | ✅      | 08-global-exception-handling | Exception Handling, ProblemDetails                           |
 | ✅      | 09-api-versioning            | API Versioning Strategies                                    |
-| ⬜      | 10-health-checks             | Health Checks, Readiness, Liveness                           |
+| ✅      | 10-health-checks             | Health Checks, Readiness, Liveness                           |
+
+
+## ASP.NET Core Architecture Map
+
+```text
+Program.cs
+│
+├── Service Registration
+│       ├── AddControllers()
+│       ├── AddScoped()
+│       ├── AddSingleton()
+│       ├── AddTransient()
+│       ├── AddOptions()
+│       └── AddHealthChecks()
+│
+├── Middleware Pipeline
+│       ├── Logging
+│       ├── Exception Handling
+│       ├── Configuration
+│       └── Routing
+│
+└── Endpoint Registration
+        ├── MapGet()
+        ├── MapPost()
+        ├── MapDelete()
+        ├── MapControllers()
+        └── MapHealthChecks()
+
+Request
+    ↓
+Middleware Pipeline
+    ↓
+Endpoint Selection
+    ↓
+Controller / Minimal API / Health Check
+    ↓
+Service
+    ↓
+Response
+```
+
+Cross-Cutting Concerns:
+
+* Dependency Injection
+* Configuration
+* Logging
+* Exception Handling
+* API Versioning
+* Health Checks
+
 
 ### Completed Knowledge
 
@@ -688,6 +738,283 @@ Key Takeaways:
 ---
 
 #### Project 09 api-versioning
+
+##### Goal
+
+Learn how to evolve API contracts without breaking existing clients.
+
+---
+
+##### Topics
+
+* API Contracts
+* Breaking Changes
+* URL Versioning
+* DTO Versioning
+* Controller Versioning
+* Contract Evolution
+
+---
+
+##### Core Idea
+
+An API is a contract between a server and its clients.
+
+Once clients depend on a contract, changing it can break them.
+
+Versioning allows old and new contracts to coexist.
+
+```text
+/api/v1/users
+/api/v2/users
+```
+
+---
+
+##### Breaking Changes
+
+Examples:
+
+* Renaming fields
+* Removing fields
+* Changing routes
+* Changing response schemas
+* Adding required request fields
+
+Example:
+
+V1:
+
+```json
+{
+  "id": 1,
+  "name": "Alice"
+}
+```
+
+V2:
+
+```json
+{
+  "id": 1,
+  "displayName": "Alice",
+  "email": "alice@example.com",
+  "isActive": true
+}
+```
+
+Changing `name` → `displayName` is a breaking change.
+
+---
+
+##### Design Principles
+
+###### Separate DTOs
+
+```text
+Contracts/V1/
+Contracts/V2/
+```
+
+Different API versions should have independent request/response contracts.
+
+###### Separate Controllers
+
+```text
+Controllers/V1/
+Controllers/V2/
+```
+
+Different versions often evolve independently.
+
+###### Shared Domain Model
+
+```text
+Domain Model
+    ↓
+V1 Contract
+
+Domain Model
+    ↓
+V2 Contract
+```
+
+Internal models can remain stable while API contracts evolve.
+
+---
+
+### Key Takeaways
+
+1. APIs are contracts.
+2. Breaking changes require versioning.
+3. Multiple API versions can coexist.
+4. Domain models and API contracts should be separated.
+5. Different versions should have separate DTOs.
+6. Different versions often benefit from separate Controllers.
+7. Versioning enables gradual client migration.
+
+---
+
+#### Project 10 Health Checks
+
+##### Goal
+
+Learn how production systems determine whether an application is alive and ready to receive traffic.
+
+---
+
+##### Topics
+
+* Health Checks
+* Liveness
+* Readiness
+* IHealthCheck
+* HealthCheckResult
+* Production Monitoring
+* Kubernetes Probes
+
+---
+
+##### Core Idea
+
+Health Checks answer two questions:
+
+```text
+Is the application alive?
+
+Can the application serve traffic?
+```
+
+ASP.NET Core exposes dedicated endpoints for this purpose.
+
+---
+
+### Liveness
+
+Question:
+
+```text
+Is the application process running?
+```
+
+Endpoint:
+
+```text
+/health/live
+```
+
+If liveness fails:
+
+```text
+Platform may restart the application.
+```
+
+---
+
+##### Readiness
+
+Question:
+
+```text
+Can this application instance currently receive traffic?
+```
+
+Endpoint:
+
+```text
+/health/ready
+```
+
+If readiness fails:
+
+```text
+Platform removes the instance from traffic.
+```
+
+---
+
+##### Health States
+
+ASP.NET Core supports:
+
+```text
+Healthy
+Degraded
+Unhealthy
+```
+
+Healthy:
+
+* Everything works.
+
+Degraded:
+
+* Application still functions, but some dependencies are impaired.
+
+Unhealthy:
+
+* Application cannot correctly serve requests.
+
+---
+
+##### Custom Health Checks
+
+Custom checks implement:
+
+```csharp
+IHealthCheck
+```
+
+Examples:
+
+```text
+DatabaseHealthCheck
+RedisHealthCheck
+ServiceBusHealthCheck
+ExternalApiHealthCheck
+```
+
+---
+
+##### Production Guidance
+
+Dependencies generally belong in Readiness checks:
+
+```text
+Database
+Redis
+Message Queue
+External API
+```
+
+Avoid placing dependency checks in Liveness probes.
+
+---
+
+### Kubernetes Mental Model
+
+```text
+Liveness fails
+    ↓
+Restart container
+
+Readiness fails
+    ↓
+Remove instance from traffic
+```
+
+---
+
+##### Key Takeaways
+
+1. Health Checks are production endpoints.
+2. Liveness and Readiness serve different purposes.
+3. Dependencies usually belong in Readiness checks.
+4. Custom checks implement IHealthCheck.
+5. ASP.NET Core supports Healthy, Degraded, and Unhealthy states.
+6. Health Checks are essential for Kubernetes and cloud-native systems.
+7. Health Checks improve application operability and reliability.
+
 
 ---
 

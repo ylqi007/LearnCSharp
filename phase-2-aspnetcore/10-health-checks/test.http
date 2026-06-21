@@ -1,0 +1,37 @@
+@host=http://localhost:5118
+
+### Root
+GET {{host}}/
+
+### Users API
+GET {{host}}/api/users
+
+### Full health report
+GET {{host}}/health
+
+### Liveness probe
+GET {{host}}/health/live
+
+### Readiness probe
+GET {{host}}/health/ready
+
+### Simulate database down
+POST {{host}}/api/demo-dependencies/database/false
+
+### Readiness should become unhealthy
+GET {{host}}/health/ready
+
+### Restore database
+POST {{host}}/api/demo-dependencies/database/true
+
+### Simulate external API down
+POST {{host}}/api/demo-dependencies/external-api/false
+
+### Readiness should become degraded
+GET {{host}}/health/ready
+
+### Restore external API
+POST {{host}}/api/demo-dependencies/external-api/true
+
+### Full health report after restore
+GET {{host}}/health
